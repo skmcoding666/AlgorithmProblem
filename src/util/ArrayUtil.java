@@ -1,5 +1,6 @@
 package util;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ArrayUtil {
@@ -12,7 +13,7 @@ public class ArrayUtil {
         StringBuilder temp = new StringBuilder();
         temp.append("The List : [\r\n");
 
-        for(List tempList : list) {
+        for(List<T> tempList : list) {
             temp.append(getListBody(tempList));
         }
         temp.delete(temp.length()-2, temp.length()-1);
@@ -24,12 +25,29 @@ public class ArrayUtil {
         System.out.println("The List :" + getListBody(list));
     }
 
+    public static void showArray(int[] array) {
+        List<Integer> list = new ArrayList<>();
+        for(int temp: array) {
+            list.add(temp);
+        }
+        System.out.println("The Array :" + getListBody(list));
+    }
+
+    public static void showArray(double[] array) {
+        List<Double> list = new ArrayList<>();
+        for(double temp: array) {
+            list.add(temp);
+        }
+        System.out.println("The Array :" + getListBody(list));
+    }
+
     private static <T> StringBuilder getListBody(List<T> list) {
         StringBuilder temp = new StringBuilder();
         temp.append(" [");
         int count = 0;
         for(Object o : list) {
-            temp.append(" " + o.toString() + ",");
+            String element = " " + o.toString() + ",";
+            temp.append(element);
             if(++count == 10) {
                 count = 0;
                 temp.append("\r\n");
